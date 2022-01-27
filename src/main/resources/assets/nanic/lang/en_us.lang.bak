@@ -1,0 +1,30 @@
+#Items
+item.nano_electrical_circuit.name=Nanofiber Electrical circuit
+item.advanced_electrical_circuit.name=Advanced Electrical circuit
+item.improved_electrical_circuit.name=Improved Electrical circuit
+item.tetha_plate.name=Theta Plate
+item.leta_plate.name=Leta Plate
+item.meta_plate.name=Metha Plate
+item.scandium_plate.name=Scandium plate
+item.tantalum_plate.name=Tantalum plate
+item.neutronium_plate.name=Neutronium plate
+item.protonium_plate.name=Protonium plate
+item.scandium_ingot.name=Scandium ingot
+item.tantalum_ingot.name=Tantalum ingot
+
+
+#Tools
+ic2.scandium_drill=Scandium_drill
+
+
+#Generatos
+nanic.generators.low_voltage_solar_panel=§aLow Voltage Solar Panel
+nanic.generators.medium_voltage_solar_panel=§bMedium Voltage Solar Panel
+nanic.generators.high_voltage_solar_panel=§cHigh voltage solar panel
+
+
+#ToolTip
+nanic.item.tooltip.max_generation=Generation at day: 
+nanic.item.tooltip.min_generation=Generation at night: 
+nanic.item.tooltip.drill.mode_on=Extreme mode enabled
+nanic.item.tooltip.drill.mode_off=Extreme mode disablet

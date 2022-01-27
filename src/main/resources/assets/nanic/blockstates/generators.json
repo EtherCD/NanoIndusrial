@@ -1,0 +1,19 @@
+{
+	"forge_marker"	:1,
+	"variants"		:{
+		"type"		:{
+			"low_voltage_solar_panel"	:	{"model": 	"nanic:generators/low_voltage_solar_panel"		},
+			"medium_voltage_solar_panel":	{"model": 	"nanic:generators/medium_voltage_solar_panel"	},
+			"high_voltage_solar_panel"	: 	{"model":	"nanic:generators/high_voltage_solar_panel"		}
+		},
+		"facing"	: {
+			"down"	: { "x": 90 							},
+			"up"	: { "x": 270 							},
+			"north"	: { "transform": "forge:default-block" 	},
+			"south"	: { "y": 180 							},
+			"west"	: { "y": 270 							},
+			"east"	: { "y": 90 							}
+		},
+		"inventory"	:[{}]
+	}
+}
