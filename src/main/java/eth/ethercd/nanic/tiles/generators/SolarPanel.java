@@ -34,9 +34,15 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
     public int tier;
 
     @GuiSynced
-    protected int genMax;
-    protected int genMin;
+    protected int genDay;
+    protected int genNight;
+    protected int genRain;
+    protected int genNightRain;
     private int generation;
+    private boolean isDay;
+    private boolean canSee;
+    private boolean rain;
+    private GenerationState generationState=GenerationState.NONE;
 
     protected int maxOutput;
 
@@ -47,6 +53,12 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
         super.onLoaded();
         if (!this.world.isRemote) {
             this.addedToEnet = !MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
+            this.isDay=this.world.isDaytime();
+            this.canSee=this.world.canBlockSeeSky(this.pos.up()) &&
+                    (this.world.getBlockState(this.pos.up()).getMaterial().getMaterialMapColor() ==
+                            MapColor.AIR) && !this.world.provider.isNether();
+            this.rain = this.world.getBiome(this.pos).getRainfall() > 0.0F && (this.world.isRaining() || this.world.isThundering());
+            updateVis();
         }
     }
 
@@ -61,20 +73,27 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
     @Override
     protected void updateEntityServer() {
         super.updateEntityServer();
-        boolean isDay=this.world.isDaytime();
-        boolean canSee=this.world.canBlockSeeSky(this.pos.up()) &&
-                (this.world.getBlockState(this.pos.up()).getMaterial().getMaterialMapColor() ==
-                        MapColor.AIR) && !this.world.provider.isNether();
-        boolean rain = this.world.getBiome(this.pos).getRainfall() > 0.0F && (this.world.isRaining() || this.world.isThundering());
+        updateVis();
 
-        if (canSee) {
-            if (isDay&&!rain) {
-                this.generation=this.genMax;
+    }
+
+    private void updateVis() {
+        if(!canSee) {
+            generationState=GenerationState.NONE;
+        }
+        if (isDay&&canSee){
+            if(!(rain)){
+                generationState=GenerationState.DAY;
             } else {
-                this.generation=this.genMin;
+                generationState=GenerationState.RAIN;
             }
-        } else {
-            this.generation=0;
+        }
+        if (!isDay&&canSee) {
+            if(!(rain)) {
+                generationState=GenerationState.NIGHT;
+            } else {
+                generationState=GenerationState.NIGHT_RAIN;
+            }
         }
     }
 
@@ -105,9 +124,14 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
     // Method of gen energy
     @Override
     public double getOfferedEnergy() {
-        //if (this.storage>=this.maxStorage)
-        //    return 0;
-        return this.generation;
+        if (generationState==GenerationState.DAY)
+            return genDay;
+        else if (generationState==GenerationState.NIGHT)
+            return genNight;
+        else if (generationState==GenerationState.RAIN)
+            return genRain;
+        else
+            return genNightRain;
     }
 
     @Override
@@ -137,8 +161,8 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
         tooltip.add(Localization.translate("ic2.item.tooltip.PowerTier",
                 this.tier)
         );
-        tooltip.add(Localization.translate("nanic.item.tooltip.max_generation")+this.genMax);
-        tooltip.add(Localization.translate("nanic.item.tooltip.min_generation")+this.genMin);
+        tooltip.add(Localization.translate("nanic.item.tooltip.day_generation")+this.genDay);
+        tooltip.add(Localization.translate("nanic.item.tooltip.night_generation")+this.genNight);
         tooltip.add(Localization.translate("ic2.item.tooltip.Output")
                 +" "
                 +this.maxOutput

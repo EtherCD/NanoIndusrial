@@ -29,7 +29,7 @@ nanic.generators.high_voltage_solar_panel=§cСолнечная панель в�
 
 
 #В инвентаре
-nanic.item.tooltip.max_generation=Генерация днём: 
-nanic.item.tooltip.min_generation=генерация ночью: 
+nanic.item.tooltip.day_generation=Генерация днём: 
+nanic.item.tooltip.night_generation=генерация ночью: 
 nanic.item.tooltip.drill.mode_on=Экстрим режим включён
 nanic.item.tooltip.drill.mode_off=Экстрим режим выключен

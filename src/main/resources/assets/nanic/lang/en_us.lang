@@ -24,7 +24,7 @@ nanic.generators.high_voltage_solar_panel=§cHigh voltage solar panel
 
 
 #ToolTip
-nanic.item.tooltip.max_generation=Generation at day: 
-nanic.item.tooltip.min_generation=Generation at night: 
+nanic.item.tooltip.day_generation=Generation at day: 
+nanic.item.tooltip.night_generation=Generation at night: 
 nanic.item.tooltip.drill.mode_on=Extreme mode enabled
 nanic.item.tooltip.drill.mode_off=Extreme mode off
