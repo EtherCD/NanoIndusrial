@@ -38,11 +38,12 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
     protected int genNight;
     protected int genRain;
     protected int genNightRain;
-    private int generation;
     private boolean isDay;
     private boolean canSee;
     private boolean rain;
     private GenerationState generationState=GenerationState.NONE;
+
+    private int gen;
 
     protected int maxOutput;
 
@@ -100,13 +101,13 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
-        this.generation=nbt.getInteger("production");
+        this.gen=nbt.getInteger("production");
         this.tier=nbt.getInteger("tier");
     }
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
-        nbt.setInteger("production", this.generation);
+        nbt.setInteger("production", getGenFromGenState(generationState));
         nbt.setInteger("tier", this.tier);
         return nbt;
     }
@@ -121,9 +122,7 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
         return true;
     }
 
-    // Method of gen energy
-    @Override
-    public double getOfferedEnergy() {
+    private int getGenFromGenState(GenerationState genState) {
         if (generationState==GenerationState.DAY)
             return genDay;
         else if (generationState==GenerationState.NIGHT)
@@ -132,6 +131,12 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
             return genRain;
         else
             return genNightRain;
+    }
+
+    // Method of gen energy
+    @Override
+    public double getOfferedEnergy() {
+        return getGenFromGenState(generationState);
     }
 
     @Override
@@ -146,12 +151,12 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
 
     @Override
     public boolean sendMultipleEnergyPackets() {
-        return (double)this.generation-EnergyNet.instance.getPowerFromTier(this.tier)>0.0D;
+        return (double)getGenFromGenState(generationState)-EnergyNet.instance.getPowerFromTier(this.tier)>0.0D;
     }
 
     @Override
     public int getMultipleEnergyPacketAmount() {
-        return (int)Math.round((double)this.generation);
+        return (int)Math.round((double)getGenFromGenState(generationState));
     }
 
     @Override
