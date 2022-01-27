@@ -26,6 +26,7 @@ ic2.scandium_drill=Скандиевый бур
 nanic.generators.low_voltage_solar_panel=§aСолнечная панель низкого напряжения
 nanic.generators.medium_voltage_solar_panel=§bСолнечная панель среднего напряжения
 nanic.generators.high_voltage_solar_panel=§cСолнечная панель высокого напряжения
+nanic.generators.extreme_voltage_solar_panel=§5Солнечная панель экстримального напряжения
 
 
 #В инвентаре

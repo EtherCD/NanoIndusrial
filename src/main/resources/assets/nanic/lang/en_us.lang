@@ -21,6 +21,7 @@ ic2.scandium_drill=Scandium_drill
 nanic.generators.low_voltage_solar_panel=§aLow Voltage Solar Panel
 nanic.generators.medium_voltage_solar_panel=§bMedium Voltage Solar Panel
 nanic.generators.high_voltage_solar_panel=§cHigh voltage solar panel
+nanic.generators.extreme_voltage_solar_panel=§5Extreme voltage solar panel
 
 
 #ToolTip

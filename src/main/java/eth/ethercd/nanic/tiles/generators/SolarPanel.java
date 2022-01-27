@@ -128,6 +128,14 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
         return true;
     }
 
+    @Override
+    public boolean onRemovedByPlayer(EntityPlayer player, boolean willHarvest) {
+        generationState=GenerationState.NONE;
+        addedToEnet=false;
+        this.clear();
+        return true;
+    }
+
     private int getGenFromGenState(GenerationState genState) {
         if (generationState==GenerationState.DAY)
             return genDay;
@@ -135,8 +143,10 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
             return genNight;
         else if (generationState==GenerationState.RAIN)
             return genRain;
-        else
+        else if (generationState==GenerationState.NIGHT_RAIN)
             return genNightRain;
+        else
+            return 0;
     }
 
     // Method of gen energy

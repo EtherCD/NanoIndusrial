@@ -2,9 +2,10 @@
 	"forge_marker"	:1,
 	"variants"		:{
 		"type"		:{
-			"low_voltage_solar_panel"	:	{"model": 	"nanic:generators/low_voltage_solar_panel"		},
-			"medium_voltage_solar_panel":	{"model": 	"nanic:generators/medium_voltage_solar_panel"	},
-			"high_voltage_solar_panel"	: 	{"model":	"nanic:generators/high_voltage_solar_panel"		}
+			"low_voltage_solar_panel"		:	{"model": 	"nanic:generators/low_voltage_solar_panel"		},
+			"medium_voltage_solar_panel"	:	{"model": 	"nanic:generators/medium_voltage_solar_panel"	},
+			"high_voltage_solar_panel"		: 	{"model":	"nanic:generators/high_voltage_solar_panel"		},
+			"extreme_voltage_solar_panel"	:	{"model":	"nanic:generators/extreme_voltage_solar_panel"	}
 		},
 		"facing"	: {
 			"down"	: { "x": 90 							},

@@ -19,7 +19,8 @@ public enum GeneratorsTE implements ITeBlock {
 
     low_voltage_solar_panel(LowVoltageSolarPanelTE.class, 1, EnumRarity.COMMON),
     medium_voltage_solar_panel(MediumVoltageSolarPanelTE.class, 2, EnumRarity.COMMON),
-    high_voltage_solar_panel(HighVoltageSolarPanelTE.class, 3, EnumRarity.COMMON);
+    high_voltage_solar_panel(HighVoltageSolarPanelTE.class, 3, EnumRarity.COMMON),
+    extreme_voltage_solar_panel(ExtremeVoltageSolarPanelTE.class, 4, EnumRarity.RARE);
 
     private final Class teClass;
     private final int itemMeta;
