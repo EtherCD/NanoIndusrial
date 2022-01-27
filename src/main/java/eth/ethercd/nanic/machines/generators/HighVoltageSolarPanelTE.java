@@ -6,7 +6,7 @@ public class HighVoltageSolarPanelTE extends SolarPanel {
     public HighVoltageSolarPanelTE() {
         this.tier=3;
         this.genMax=256;
-        this.genMin=128;
+        this.genMin=129;
         this.maxOutput=512;
     }
 }

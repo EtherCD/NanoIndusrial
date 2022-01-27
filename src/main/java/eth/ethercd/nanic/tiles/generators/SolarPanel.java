@@ -122,14 +122,12 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
 
     @Override
     public boolean sendMultipleEnergyPackets() {
-        return false;
-        //return (double)this.generation-EnergyNet.instance.getPowerFromTier(this.tier)>0.0D;
+        return (double)this.generation-EnergyNet.instance.getPowerFromTier(this.tier)>0.0D;
     }
 
     @Override
     public int getMultipleEnergyPacketAmount() {
-        return 0;
-        //return (int)Math.round((double)this.generation);
+        return (int)Math.round((double)this.generation);
     }
 
     @Override
@@ -141,6 +139,11 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
         );
         tooltip.add(Localization.translate("nanic.item.tooltip.max_generation")+this.genMax);
         tooltip.add(Localization.translate("nanic.item.tooltip.min_generation")+this.genMin);
+        tooltip.add(Localization.translate("ic2.item.tooltip.Output")
+                +" "
+                +this.maxOutput
+                +" EU/t"
+        );
     }
 
 
