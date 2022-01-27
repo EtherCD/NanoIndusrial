@@ -74,6 +74,12 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
     @Override
     protected void updateEntityServer() {
         super.updateEntityServer();
+        this.isDay=this.world.isDaytime();
+        this.canSee=this.world.canBlockSeeSky(this.pos.up()) &&
+                (this.world.getBlockState(this.pos.up()).getMaterial().getMaterialMapColor() ==
+                        MapColor.AIR) && !this.world.provider.isNether();
+        this.rain = this.world.getBiome(this.pos).getRainfall() > 0.0F && (this.world.isRaining() || this.world.isThundering());
+
         updateVis();
 
     }
