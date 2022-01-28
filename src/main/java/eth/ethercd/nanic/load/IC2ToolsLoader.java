@@ -1,6 +1,7 @@
 package eth.ethercd.nanic.load;
 
-import eth.ethercd.nanic.items.electric.ScandiumDrill;
+import eth.ethercd.nanic.items.electric.tools.DestroyerSpaceAndTime;
+import eth.ethercd.nanic.items.electric.tools.ScandiumDrill;
 import ic2.core.ref.IItemModelProvider;
 import ic2.core.ref.ItemName;
 import net.minecraft.item.IItemPropertyGetter;
@@ -10,7 +11,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public enum IC2ToolsLoader {
 
-    SCANDIUM_DRILL;
+    SCANDIUM_DRILL,
+    DESTROYER_SPACE_AND_TIME;
 
     private Item instance;
 
@@ -24,6 +26,7 @@ public enum IC2ToolsLoader {
 
     public static void buildItems(Side side) {
         SCANDIUM_DRILL.setInstance(new ScandiumDrill());
+        DESTROYER_SPACE_AND_TIME.setInstance(new DestroyerSpaceAndTime());
 
         if(side==Side.CLIENT){
             doModelGuf();

@@ -1,6 +1,7 @@
 package eth.ethercd.nanic.load;
 
 import eth.ethercd.nanic.items.*;
+import eth.ethercd.nanic.items.electric.ProtoniumEnergyCrystal;
 import eth.ethercd.nanic.items.plate.*;
 import eth.ethercd.nanic.items.ingots.*;
 import net.minecraft.item.Item;
@@ -26,4 +27,6 @@ public class ItemLoader {
     //Ingots
     public static final Item SCANDIUM_INGOT                 = new ScandiumIngot("scandium_ingot");
     public static final Item TANTALUM_INGOT                 = new TantalumIngot("tantalum_ingot");
+    //Energy Crystals
+    public static final Item PROTONIUM_ENERGY_CRYSTAL       = new ProtoniumEnergyCrystal("protonium_energy_crystal");
 }

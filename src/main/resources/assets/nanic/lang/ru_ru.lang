@@ -20,6 +20,7 @@ item.tantalum_ingot.name=Слиток Тантала
 
 #Инструменты
 ic2.scandium_drill=Скандиевый бур
+ic2.destroyer_space_and_time=Уничтожитель пространства и времени
 
 
 #Панели
@@ -32,5 +33,8 @@ nanic.generators.extreme_voltage_solar_panel=§5Солнечная панель 
 #В инвентаре
 nanic.item.tooltip.day_generation=Генерация днём: 
 nanic.item.tooltip.night_generation=генерация ночью: 
-nanic.item.tooltip.drill.mode_on=Экстрим режим включён
-nanic.item.tooltip.drill.mode_off=Экстрим режим выключен
+nanic.item.tooltip.drill.mode_on=Режим: Крушитель
+nanic.item.tooltip.drill.mode_off=Режим: Стандартный
+nanic.item.tooltip.destroyer.mode_on=Режим: Уничтожение ткани мироздания
+nanic.item.tooltip.destroyer.mode_off=Режим: Стандартный
+nanic.item.tooltip.destroyer.ops=Может сломать бедрок.

@@ -14,7 +14,8 @@ item.tantalum_ingot.name=Tantalum ingot
 
 
 #Tools
-ic2.scandium_drill=Scandium_drill
+ic2.scandium_drill=Scandium drill
+ic2.destroyer_space_and_time=Space and Time Destroyer
 
 
 #Generatos
@@ -27,5 +28,8 @@ nanic.generators.extreme_voltage_solar_panel=§5Extreme voltage solar panel
 #ToolTip
 nanic.item.tooltip.day_generation=Generation at day: 
 nanic.item.tooltip.night_generation=Generation at night: 
-nanic.item.tooltip.drill.mode_on=Extreme mode enabled
-nanic.item.tooltip.drill.mode_off=Extreme mode off
+nanic.item.tooltip.drill.mode_on=Mode: Destroyer
+nanic.item.tooltip.drill.mode_off=Mode: Standart
+nanic.item.tooltip.destroyer.mode_on=Mode: Destruction of the fabric of the universe
+nanic.item.tooltip.destroyer.mode_off=Mode: Standart
+nanic.item.tooltip.destroyer.ops=Can break a bedrock.

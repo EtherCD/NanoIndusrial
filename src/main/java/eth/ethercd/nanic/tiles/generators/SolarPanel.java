@@ -8,12 +8,14 @@ import ic2.api.energy.tile.IMultiEnergySource;
 import ic2.api.network.INetworkClientTileEntityEventListener;
 import ic2.api.network.INetworkUpdateListener;
 import ic2.core.ContainerBase;
+import ic2.core.IC2;
 import ic2.core.IHasGui;
 import ic2.core.block.TileEntityInventory;
 import ic2.core.gui.dynamic.DynamicContainer;
 import ic2.core.gui.dynamic.GuiParser;
 import ic2.core.init.Localization;
 import ic2.core.network.GuiSynced;
+import ic2.core.util.LogCategory;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
@@ -80,6 +82,8 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
                         MapColor.AIR) && !this.world.provider.isNether();
         this.rain = this.world.getBiome(this.pos).getRainfall() > 0.0F && (this.world.isRaining() || this.world.isThundering());
 
+        this.addedToEnet = !MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
+
         updateVis();
 
     }
@@ -125,14 +129,6 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
 
     @Override
     public boolean emitsEnergyTo(IEnergyAcceptor receiver, EnumFacing side) {
-        return true;
-    }
-
-    @Override
-    public boolean onRemovedByPlayer(EntityPlayer player, boolean willHarvest) {
-        generationState=GenerationState.NONE;
-        addedToEnet=false;
-        this.clear();
         return true;
     }
 

@@ -54,6 +54,7 @@ dependencies {
 
     compile "net.industrial-craft:industrialcraft-2:2.8.221-ex112:api"
     compile "net.industrial-craft:industrialcraft-2:2.8.221-ex112:dev"
+    //runtime "mezz.jei:jei_1.12.2:4.8.5.137"
 }
 
 jar {

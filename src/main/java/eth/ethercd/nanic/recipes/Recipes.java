@@ -9,15 +9,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class Recipes {
-    public static final ItemStack electrical_circuit = IC2Items.getItem("crafting", "circuit");
-    public static final ItemStack plate_gold = IC2Items.getItem("plate", "gold");
-    public static final ItemStack carbon_plate = IC2Items.getItem("crafting", "carbon_plate");
+    public static final ItemStack electrical_circuit    = IC2Items.getItem("crafting", "circuit");
+    public static final ItemStack plate_gold            = IC2Items.getItem("plate", "gold");
+    public static final ItemStack carbon_plate          = IC2Items.getItem("crafting", "carbon_plate");
+    public static final ItemStack laptron_crystal       =IC2Items.getItem("lapotron_crystal");
 
     //misc
     public static final ItemStack nano_electrical_circuit = new ItemStack(ItemLoader.NANO_ELECTRICAL_CIRCUIT);
+    public static final ItemStack protonium_energy_crystal = new ItemStack(ItemLoader.PROTONIUM_ENERGY_CRYSTAL);
     //plates
-    public static final ItemStack scandium_plate = new ItemStack(ItemLoader.SCANDIUM_PLATE);
-    public static final ItemStack tantalum_plate = new ItemStack(ItemLoader.TANTALUM_PLATE);
+    public static final ItemStack scandium_plate    = new ItemStack(ItemLoader.SCANDIUM_PLATE);
+    public static final ItemStack tantalum_plate    = new ItemStack(ItemLoader.TANTALUM_PLATE);
+    public static final ItemStack tetha_plate       = new ItemStack(ItemLoader.TETHA_PLATE);
+    public static final ItemStack protonium_plate   = new ItemStack(ItemLoader.PROTONIUM_PLATE);
     //ingots
     public static final ItemStack scandium_ingot = new ItemStack(ItemLoader.SCANDIUM_INGOT);
     public static final ItemStack tantalum_ingot = new ItemStack(ItemLoader.TANTALUM_INGOT);
@@ -32,6 +36,16 @@ public class Recipes {
                 'D', electrical_circuit,
                 'R', scandium_plate,
                 'L', plate_gold
+        );
+        addShapedRecipes(
+                (protonium_energy_crystal),
+                "LIL",
+                "RDR",
+                "LIL",
+                'L',tetha_plate,
+                'R',laptron_crystal,
+                'I',nano_electrical_circuit,
+                'D',protonium_plate
         );
     }
 

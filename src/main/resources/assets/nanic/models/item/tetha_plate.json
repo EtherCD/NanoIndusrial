@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "nanic:items/tetha_plate"
+        "layer0": "nanic:items/plates/tetha_plate"
     }
  }
  

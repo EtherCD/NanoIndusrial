@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "nanic:items/protonium_plate"
+        "layer0": "nanic:items/plates/protonium_plate"
     }
  }
  
