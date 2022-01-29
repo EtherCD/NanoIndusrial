@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "nanic:items/reactors/coolant_cell_one_two_k"
+    }
+ }
+ 

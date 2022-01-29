@@ -1,0 +1,8 @@
+{
+	"parent"	: "minecraft:block/cube_bottom_top"		,
+	"textures"	: {
+		"side"	: "nanic:blocks/generators/evps_side"	,
+		"bottom": "nanic:blocks/generators/evps_bottom"	,
+		"top"	: "nanic:blocks/generators/evps_top"
+	}
+}

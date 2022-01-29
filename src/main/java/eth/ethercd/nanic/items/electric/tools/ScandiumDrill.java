@@ -61,7 +61,6 @@ public class ScandiumDrill extends ItemDrill {
         return false;
     }
 
-    @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         if (!world.isRemote&& IC2.keyboard.isModeSwitchKeyDown(player)) {
             if (!Reg) {

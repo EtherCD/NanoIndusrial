@@ -4,6 +4,7 @@ import eth.ethercd.nanic.items.*;
 import eth.ethercd.nanic.items.electric.ProtoniumEnergyCrystal;
 import eth.ethercd.nanic.items.plate.*;
 import eth.ethercd.nanic.items.ingots.*;
+import eth.ethercd.nanic.items.reactors.CoolantCell120K;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;
@@ -29,4 +30,6 @@ public class ItemLoader {
     public static final Item TANTALUM_INGOT                 = new TantalumIngot("tantalum_ingot");
     //Energy Crystals
     public static final Item PROTONIUM_ENERGY_CRYSTAL       = new ProtoniumEnergyCrystal("protonium_energy_crystal");
+    //Reactor Components
+    public static final Item COOLANT_CELL_120L              = new CoolantCell120K("coolant_cell_one_two_k");
 }

@@ -13,6 +13,14 @@ item.scandium_ingot.name=Scandium ingot
 item.tantalum_ingot.name=Tantalum ingot
 
 
+#Energy crystals
+ic2.protonium_energy_crystal=Proton Energy Crystal
+
+
+#Reactor
+ic2.coolant_cell_one_two_k=Coolant Cell 120K
+
+
 #Tools
 ic2.scandium_drill=Scandium drill
 ic2.destroyer_space_and_time=Space and Time Destroyer

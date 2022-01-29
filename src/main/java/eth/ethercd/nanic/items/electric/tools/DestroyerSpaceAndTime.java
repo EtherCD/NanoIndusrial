@@ -6,7 +6,6 @@ import ic2.core.init.Localization;
 import ic2.core.item.tool.HarvestLevel;
 import ic2.core.item.tool.ItemDrill;
 import ic2.core.ref.ItemName;
-import ic2.core.util.LogCategory;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
@@ -40,10 +39,10 @@ public class DestroyerSpaceAndTime extends ItemDrill {
                 160,
                 tir,
                 eff);
-        this.rarity = EnumRarity.RARE;
-        this.efficiency=999;
-        this.attackSpeed= (float) 0.0000000000000000001;
+        this.rarity = EnumRarity.EPIC;
+        this.attackSpeed=0.000000000001f;
         this.attackDamage=1000000000;
+        this.efficiency=999;
         ((DestroyerSpaceAndTime) BlocksItems.registerItem(this, new ResourceLocation("nanic", "destroyer_space_and_time"))).setUnlocalizedName("destroyer_space_and_time");
     }
 
@@ -58,19 +57,8 @@ public class DestroyerSpaceAndTime extends ItemDrill {
 
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flagin) {
-        super.addInformation(stack,world,tooltip,flagin);
+        super.addInformation(stack, world, tooltip, flagin);
         tooltip.add(Localization.translate("nanic.item.tooltip.destroyer.ops"));
-    }
-
-    @Override
-    public int breakTime(ItemStack stack, World world, BlockPos pos, IBlockState state) {
-        return 0;
-    }
-
-    @Override
-    public boolean breakBlock(ItemStack stack, World world, BlockPos pos, IBlockState state) {
-        IC2.log.debug(LogCategory.Block,state.getBlock().getOffsetType().name());
-        return true;
     }
 
     @Override

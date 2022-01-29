@@ -18,6 +18,14 @@ item.scandium_ingot.name=Слиток Скандиума
 item.tantalum_ingot.name=Слиток Тантала
 
 
+#Енергитические кристалы
+ic2.protonium_energy_crystal=Протонный энергитический кристал
+
+
+#Реакторные приблуды
+ic2.coolant_cell_one_two_k=Ячейка охлаждающей жидкости 120K
+
+
 #Инструменты
 ic2.scandium_drill=Скандиевый бур
 ic2.destroyer_space_and_time=Уничтожитель пространства и времени
