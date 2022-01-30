@@ -56,9 +56,9 @@ public class Recipes {
         );
         addShapedRecipes(
                 (protonium_energy_crystal),
-                "ABA",
-                "CDC",
-                "ABA",
+                "ACA",
+                "BDB",
+                "ACA",
                 'A',iridium_plate,
                 'B',protonium_electrical_circuit,
                 'C',neutron_proton_reflector,
@@ -96,12 +96,13 @@ public class Recipes {
         );
         addShapedRecipes(
                 (neutron_proton_reflector),
-                "ABA",
+                "ADA",
                 "BCB",
-                "ABA",
+                "ADA",
                 'A',dense_carbon_plate,
                 'B',small_uranium_235,
-                'C',iridium_reflector
+                'C',iridium_reflector,
+                'D',iridium_plate
         );
     }
 
@@ -114,6 +115,7 @@ public class Recipes {
 
         //addPlateCompressorRecipe(input.forStack(scandium_ingot), scandium_plate);
         //addPlateCompressorRecipe(input.forStack(tantalum_ingot), tantalum_plate);
+        addCompressorRecipe(input.forStack(carbon_plate, 9), dense_carbon_plate);
     }
 
     private static void addCompressorRecipe(IRecipeInput inp, ItemStack out) {
