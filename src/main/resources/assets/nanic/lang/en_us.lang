@@ -1,16 +1,8 @@
 #Items
-item.nano_electrical_circuit.name=Nanofiber Electrical circuit
-item.advanced_electrical_circuit.name=Advanced Electrical circuit
-item.improved_electrical_circuit.name=Improved Electrical circuit
-item.tetha_plate.name=Theta Plate
-item.leta_plate.name=Leta Plate
-item.meta_plate.name=Metha Plate
-item.scandium_plate.name=Scandium plate
-item.tantalum_plate.name=Tantalum plate
+item.protonium_electrical_circuit.name=Protonium electrical circuit
 item.neutronium_plate.name=Neutronium plate
 item.protonium_plate.name=Protonium plate
-item.scandium_ingot.name=Scandium ingot
-item.tantalum_ingot.name=Tantalum ingot
+item.dense_carbon_plate.name=Dense carbon plate
 
 
 #Energy crystals

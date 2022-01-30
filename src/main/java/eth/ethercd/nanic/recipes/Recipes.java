@@ -8,52 +8,66 @@ import ic2.core.recipe.BasicMachineRecipeManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import java.nio.charset.StandardCharsets;
+
 public class Recipes {
-    public static final ItemStack electrical_circuit    = IC2Items.getItem("crafting", "circuit");
+    public static final ItemStack advanced_circuit      = IC2Items.getItem("crafting", "advanced_circuit");
     public static final ItemStack hex_heat_storage      = IC2Items.getItem("hex_heat_storage");
-    public static final ItemStack plate_gold            = IC2Items.getItem("plate", "gold");
-    public static final ItemStack iron_plate            = IC2Items.getItem("plate", "iron");
-    public static final ItemStack tin_plate             = IC2Items.getItem("plate", "tin");
     public static final ItemStack carbon_plate          = IC2Items.getItem("crafting", "carbon_plate");
-    public static final ItemStack laptron_crystal       =IC2Items.getItem("lapotron_crystal");
+    public static final ItemStack laptron_crystal       = IC2Items.getItem("lapotron_crystal");
 
     //misc
-    public static final ItemStack nano_electrical_circuit = new ItemStack(ItemLoader.NANO_ELECTRICAL_CIRCUIT);
-    public static final ItemStack protonium_energy_crystal = new ItemStack(ItemLoader.PROTONIUM_ENERGY_CRYSTAL);
+    public static final ItemStack protonium_electrical_circuit  = new ItemStack(ItemLoader.PROTONIUM_ELECTRICAL_CIRCUIT);
+    public static final ItemStack protonium_energy_crystal      = new ItemStack(ItemLoader.PROTONIUM_ENERGY_CRYSTAL);
+    public static final ItemStack iridium_ore                   = IC2Items.getItem("misc_resource", "iridium_ore");
+
     //plates
-    public static final ItemStack scandium_plate    = new ItemStack(ItemLoader.SCANDIUM_PLATE);
-    public static final ItemStack tantalum_plate    = new ItemStack(ItemLoader.TANTALUM_PLATE);
-    public static final ItemStack tetha_plate       = new ItemStack(ItemLoader.TETHA_PLATE);
-    public static final ItemStack protonium_plate   = new ItemStack(ItemLoader.PROTONIUM_PLATE);
+    public static final ItemStack protonium_plate       = new ItemStack(ItemLoader.PROTONIUM_PLATE);
+    public static final ItemStack dense_carbon_plate    = new ItemStack(ItemLoader.DENSE_CARBON_PLATE);
+
+    //public static final ItemStack plate_gold        = IC2Items.getItem("plate", "gold");
+    public static final ItemStack iron_plate        = IC2Items.getItem("plate", "iron");
+    public static final ItemStack tin_plate         = IC2Items.getItem("plate", "tin");
+    public static final ItemStack alloy_chestplate  = IC2Items.getItem("crafting", "alloy");
+    public static final ItemStack iridium_plate     = IC2Items.getItem("crafting", "iridium");
+
     //ingots
-    public static final ItemStack scandium_ingot = new ItemStack(ItemLoader.SCANDIUM_INGOT);
-    public static final ItemStack tantalum_ingot = new ItemStack(ItemLoader.TANTALUM_INGOT);
 
     //Reactor
-    public static final ItemStack coolant_cell_120k = new ItemStack(ItemLoader.COOLANT_CELL_120K);
-    public static final ItemStack coolant_cell_240k = new ItemStack(ItemLoader.COOLANT_CELL_240K);
+    public static final ItemStack coolant_cell_120k         = new ItemStack(ItemLoader.COOLANT_CELL_120K);
+    public static final ItemStack coolant_cell_240k         = new ItemStack(ItemLoader.COOLANT_CELL_240K);
+    public static final ItemStack coolant_cell_480k         = new ItemStack(ItemLoader.COOLANT_CELL_480K);
+    public static final ItemStack neutron_proton_reflector  = new ItemStack(ItemLoader.NEUTRON_PROTON_REFLECTOR);
+
+    public static final ItemStack neutron_reflector         = IC2Items.getItem("neutron_reflector");
+    public static final ItemStack iridium_reflector         = IC2Items.getItem("iridium_reflector");
+    public static final ItemStack small_uranium_235         = IC2Items.getItem("nuclear", "small_uranium_235");
 
     public static void addCraftingRecipes() {
         addShapedRecipes(
-                (nano_electrical_circuit),
-                "LIL",
-                "RDR",
-                "LIL",
-                'I', carbon_plate,
-                'D', electrical_circuit,
-                'R', scandium_plate,
-                'L', plate_gold
+                (protonium_electrical_circuit),
+                "ABA",
+                "CDC",
+                "ABA",
+                'A',alloy_chestplate,
+                'B',neutron_reflector,
+                'C',iridium_ore,
+                'D',advanced_circuit
         );
         addShapedRecipes(
                 (protonium_energy_crystal),
-                "LIL",
-                "RDR",
-                "LIL",
-                'L',tetha_plate,
-                'R',laptron_crystal,
-                'I',nano_electrical_circuit,
+                "ABA",
+                "CDC",
+                "ABA",
+                'A',iridium_plate,
+                'B',protonium_electrical_circuit,
+                'C',neutron_proton_reflector,
                 'D',protonium_plate
         );
+        addReactorRecipes();
+    }
+
+    private static void addReactorRecipes() {
         addShapedRecipes(
                 (coolant_cell_120k),
                 "ABA",
@@ -68,8 +82,26 @@ public class Recipes {
                 "CBC",
                 "CCC",
                 "CBC",
-                'B',hex_heat_storage,
+                'B',coolant_cell_120k,
                 'C',iron_plate
+        );
+        addShapedRecipes(
+                (coolant_cell_480k),
+                "CBC",
+                "CDC",
+                "CBC",
+                'B',coolant_cell_240k,
+                'C',iron_plate,
+                'D',alloy_chestplate
+        );
+        addShapedRecipes(
+                (neutron_proton_reflector),
+                "ABA",
+                "BCB",
+                "ABA",
+                'A',dense_carbon_plate,
+                'B',small_uranium_235,
+                'C',iridium_reflector
         );
     }
 
@@ -79,8 +111,6 @@ public class Recipes {
 
     public static void addMachineRecipe() {
         IRecipeInputFactory input = ic2.api.recipe.Recipes.inputFactory;
-        addCompressorRecipe(input.forStack(scandium_ingot), scandium_plate);
-        addCompressorRecipe(input.forStack(tantalum_ingot), tantalum_plate);
 
         //addPlateCompressorRecipe(input.forStack(scandium_ingot), scandium_plate);
         //addPlateCompressorRecipe(input.forStack(tantalum_ingot), tantalum_plate);

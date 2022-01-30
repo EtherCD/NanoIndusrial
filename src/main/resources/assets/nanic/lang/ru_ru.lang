@@ -1,21 +1,13 @@
 #Электро схемы
-item.nano_electrical_circuit.name=Нановолоконная электросхема
-item.advanced_electrical_circuit.name=Усовершенствованная электрическая схема
-item.improved_electrical_circuit.name=Улучшенная электрическая схема
+item.protonium_electrical_circuit.name=Протонивая электросхема
 
 #Пластины
-item.tetha_plate.name=Тета пластина
-item.leta_plate.name=Лета Пластина
-item.meta_plate.name=Мета Палстина
-item.scandium_plate.name=Скандиевая пластина
-item.tantalum_plate.name=Танталовая пластина
 item.neutronium_plate.name=Нейтрониевая пластина
 item.protonium_plate.name=Протониевая пластина
+item.dense_carbon_plate.name=Плотная углеволоконная пластина
 
 
 #Слитки
-item.scandium_ingot.name=Слиток Скандиума
-item.tantalum_ingot.name=Слиток Тантала
 
 
 #Енергитические кристалы

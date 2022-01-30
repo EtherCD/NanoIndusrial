@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "nanic:items/circuit/advanced_electrical_circuit"
-    }
- }
- 
