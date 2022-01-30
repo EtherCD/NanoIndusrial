@@ -10,7 +10,10 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class Recipes {
     public static final ItemStack electrical_circuit    = IC2Items.getItem("crafting", "circuit");
+    public static final ItemStack hex_heat_storage      = IC2Items.getItem("hex_heat_storage");
     public static final ItemStack plate_gold            = IC2Items.getItem("plate", "gold");
+    public static final ItemStack iron_plate            = IC2Items.getItem("plate", "iron");
+    public static final ItemStack tin_plate             = IC2Items.getItem("plate", "tin");
     public static final ItemStack carbon_plate          = IC2Items.getItem("crafting", "carbon_plate");
     public static final ItemStack laptron_crystal       =IC2Items.getItem("lapotron_crystal");
 
@@ -25,6 +28,10 @@ public class Recipes {
     //ingots
     public static final ItemStack scandium_ingot = new ItemStack(ItemLoader.SCANDIUM_INGOT);
     public static final ItemStack tantalum_ingot = new ItemStack(ItemLoader.TANTALUM_INGOT);
+
+    //Reactor
+    public static final ItemStack coolant_cell_120k = new ItemStack(ItemLoader.COOLANT_CELL_120K);
+    public static final ItemStack coolant_cell_240k = new ItemStack(ItemLoader.COOLANT_CELL_240K);
 
     public static void addCraftingRecipes() {
         addShapedRecipes(
@@ -46,6 +53,23 @@ public class Recipes {
                 'R',laptron_crystal,
                 'I',nano_electrical_circuit,
                 'D',protonium_plate
+        );
+        addShapedRecipes(
+                (coolant_cell_120k),
+                "ABA",
+                "CCC",
+                "ABA",
+                'A',tin_plate,
+                'B',hex_heat_storage,
+                'C',iron_plate
+        );
+        addShapedRecipes(
+                (coolant_cell_240k),
+                "CBC",
+                "CCC",
+                "CBC",
+                'B',hex_heat_storage,
+                'C',iron_plate
         );
     }
 

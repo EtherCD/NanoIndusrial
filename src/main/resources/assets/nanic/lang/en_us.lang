@@ -19,7 +19,11 @@ ic2.protonium_energy_crystal=Proton Energy Crystal
 
 #Reactor
 ic2.coolant_cell_one_two_k=Coolant Cell 120K
-
+ic2.coolant_cell_two_four_k=Coolant Cell 240K
+ic2.coolant_cell_four_eight_k=Coolant Cell 480K
+ic2.neutron_proton_reflector=Neutron proton reflector
+ic2.reinforced_neutron_proton_reflector=Reinforced neutron proton reflector
+ic2.glitch_uranium_quad_road=Quad fuel rod (Glitch Uranium)
 
 #Tools
 ic2.scandium_drill=Scandium drill
