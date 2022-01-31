@@ -29,4 +29,5 @@ public class ItemLoader {
     public static final Item NEUTRON_PROTON_REFLECTOR               = new NeutronProtonReflector("neutron_proton_reflector");
     public static final Item REINFORCED_NEUTRON_PROTON_REFLECTOR    = new ReinforcedNeutronProtonReflector("reinforced_neutron_proton_reflector");
     public static final Item GLITCH_URANIUM_QUAD_ROOD               = new GlichedUraniumQuadRoad("glitch_uranium_quad_road");
+    public static final Item MATTER_TRANSFORMER                     = new MatterTransformer("matter_transformer");
 }

@@ -4,7 +4,10 @@ item.protonium_electrical_circuit.name=Протонивая электросхе
 #Пластины
 item.neutronium_plate.name=Нейтрониевая пластина
 item.protonium_plate.name=Протониевая пластина
-item.dense_carbon_plate.name=Плотный углепластик
+item.dense_carbon_plate.name=Плотная углепластиковая ткань
+
+#Такое!
+item.matter_transformer.name=Трансформатор материи
 
 
 #Слитки

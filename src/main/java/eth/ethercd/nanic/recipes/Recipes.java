@@ -38,10 +38,13 @@ public class Recipes {
     public static final ItemStack coolant_cell_240k         = new ItemStack(ItemLoader.COOLANT_CELL_240K);
     public static final ItemStack coolant_cell_480k         = new ItemStack(ItemLoader.COOLANT_CELL_480K);
     public static final ItemStack neutron_proton_reflector  = new ItemStack(ItemLoader.NEUTRON_PROTON_REFLECTOR);
+    public static final ItemStack matter_transformer        = new ItemStack(ItemLoader.MATTER_TRANSFORMER);
 
     public static final ItemStack neutron_reflector         = IC2Items.getItem("neutron_reflector");
     public static final ItemStack iridium_reflector         = IC2Items.getItem("iridium_reflector");
     public static final ItemStack small_uranium_235         = IC2Items.getItem("nuclear", "small_uranium_235");
+
+    public static final ItemStack reactor_chamber           = IC2Items.getItem("te", "reactor_chamber");
 
     public static void addCraftingRecipes() {
         addShapedRecipes(
@@ -103,6 +106,16 @@ public class Recipes {
                 'B',small_uranium_235,
                 'C',iridium_reflector,
                 'D',iridium_plate
+        );
+        addShapedRecipes(
+                (matter_transformer),
+                "ABA",
+                "DCD",
+                "ABA",
+                'A',iridium_plate,
+                'B',neutron_reflector,
+                'C',dense_carbon_plate,
+                'D',reactor_chamber
         );
     }
 

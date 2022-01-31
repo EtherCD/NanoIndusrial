@@ -1,12 +1,10 @@
 package eth.ethercd.nanic.load;
 
 import eth.ethercd.nanic.NanIC;
-import eth.ethercd.nanic.machines.plateCompressorTE;
 import ic2.core.block.ITeBlock;
 import ic2.core.block.TileEntityBlock;
 import ic2.core.ref.TeBlock;
 import ic2.core.util.Util;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
@@ -17,7 +15,7 @@ import javax.annotation.Nullable;
 import java.util.Set;
 
 public enum MachinesTE implements ITeBlock {
-    plate_compressor(plateCompressorTE.class, 1)
+    //plate_compressor(plateCompressorTE.class, 1)
     ;
 
     private int itemMeta;
