@@ -8,8 +8,8 @@ import ic2.core.IC2;
 import ic2.core.item.reactor.ItemReactorIridiumReflector;
 import ic2.core.ref.ItemName;
 
-class NeutronProtonReflector extends ItemReactorIridiumReflector implements IReactorComponent, IHasModel {
-        NeutronProtonReflector(String name) {
+public class NeutronProtonReflector extends ItemReactorIridiumReflector implements IReactorComponent, IHasModel {
+        public NeutronProtonReflector(String name) {
             super((ItemName)null);
             this.setUnlocalizedName(name);
             this.setRegistryName(name);
