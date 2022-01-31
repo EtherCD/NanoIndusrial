@@ -1,10 +1,12 @@
 package eth.ethercd.nanic.load;
 
 import eth.ethercd.nanic.NanIC;
+import eth.ethercd.nanic.machines.*;
 import ic2.core.block.ITeBlock;
 import ic2.core.block.TileEntityBlock;
 import ic2.core.ref.TeBlock;
 import ic2.core.util.Util;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
@@ -15,24 +17,25 @@ import javax.annotation.Nullable;
 import java.util.Set;
 
 public enum MachinesTE implements ITeBlock {
-    //plate_compressor(plateCompressorTE.class, 1)
-    ;
+    matter_transformer(MatterTransformer.class, 0, EnumRarity.RARE);
 
-    private int itemMeta;
     private final Class<? extends TileEntityBlock> teClass;
-    private EnumRarity rarity;
+    private final int itemMeta;
     private TileEntityBlock dummyTe;
+
+    private final EnumRarity rarity;
 
     public static final ResourceLocation LOCATION = new ResourceLocation("nanic", "machines");
 
-    MachinesTE(Class<? extends TileEntityBlock> teClass, int itemMeta) {
-        this.teClass=teClass;
-        this.itemMeta=itemMeta;
+    MachinesTE(Class<? extends TileEntityBlock> teClass, int itemMeta, EnumRarity rarity) {
+        this.teClass = teClass;
+        this.itemMeta = itemMeta;
+        this.rarity = rarity;
     }
 
     @Override
     public ResourceLocation getIdentifier() {
-        return LOCATION;
+        return this.LOCATION;
     }
 
     @Override
@@ -58,7 +61,7 @@ public enum MachinesTE implements ITeBlock {
 
     @Override
     public float getHardness() {
-        return 5.0f;
+        return 1.0f;
     }
 
     @Override
@@ -78,7 +81,7 @@ public enum MachinesTE implements ITeBlock {
 
     @Override
     public EnumRarity getRarity() {
-        return EnumRarity.RARE;
+        return this.rarity;
     }
 
     @Override
@@ -89,7 +92,7 @@ public enum MachinesTE implements ITeBlock {
     @Nullable
     @Override
     public TileEntityBlock getDummyTe() {
-        return this.dummyTe;
+        return dummyTe;
     }
 
     @Override
@@ -102,8 +105,12 @@ public enum MachinesTE implements ITeBlock {
         return this.itemMeta;
     }
 
-    public String[] getRecipeCategories() {
+    public String[] getRecipesCategories() {
         return new String[] {this.getName()};
+    }
+
+    public Material getMaterial() {
+        return Material.IRON;
     }
 
     public static void buildDummies() {

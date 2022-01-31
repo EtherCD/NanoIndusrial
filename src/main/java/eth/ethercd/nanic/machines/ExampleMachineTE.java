@@ -1,4 +1,4 @@
-package eth.ethercd.nanic.tiles;
+package eth.ethercd.nanic.machines;
 
 import ic2.api.recipe.IMachineRecipeManager;
 import ic2.api.recipe.IRecipeInput;
@@ -21,11 +21,9 @@ import ic2.core.gui.dynamic.IGuiValueProvider;
 import ic2.core.network.GuiSynced;
 import ic2.core.util.StackUtil;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -34,7 +32,7 @@ import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class ExampleMachine extends TileEntityElectricMachine implements IHasGui, IGuiValueProvider, IUpgradableBlock {
+public class ExampleMachineTE extends TileEntityElectricMachine implements IHasGui, IGuiValueProvider, IUpgradableBlock {
 
     protected final int idleEU;
     protected final int activeEU;
@@ -49,11 +47,11 @@ public class ExampleMachine extends TileEntityElectricMachine implements IHasGui
     @GuiSynced
     public int progress;
 
-    public ExampleMachine(int tier, IMachineRecipeManager<IRecipeInput, Collection<ItemStack>, ItemStack> recipeSet) {
+    ExampleMachineTE(int tier, IMachineRecipeManager<IRecipeInput, Collection<ItemStack>, ItemStack> recipeSet) {
         this(tier, recipeSet, 1, 25);
     }
 
-    public ExampleMachine(int tier, IMachineRecipeManager<IRecipeInput, Collection<ItemStack>, ItemStack> recipeSet, int idleEU, int activeEU) {
+    ExampleMachineTE(int tier, IMachineRecipeManager<IRecipeInput, Collection<ItemStack>, ItemStack> recipeSet, int idleEU, int activeEU) {
         super(6000, 1);
         this.maxProgress = 1000;
         this.progress = 0;
@@ -79,9 +77,6 @@ public class ExampleMachine extends TileEntityElectricMachine implements IHasGui
         return nbt;
     }
 
-    protected void onLoaded() {
-        super.onLoaded();
-    }
     protected void onUnloaded() {
         super.onUnloaded();
     }

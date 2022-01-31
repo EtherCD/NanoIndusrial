@@ -31,7 +31,8 @@ public class Recipes {
     public static final ItemStack alloy_chestplate  = IC2Items.getItem("crafting", "alloy");
     public static final ItemStack iridium_plate     = IC2Items.getItem("crafting", "iridium");
 
-    //ingots
+    //te
+    public static final ItemStack machine_casing    = IC2Items.getItem("resource", "machine");
 
     //Reactor
     public static final ItemStack coolant_cell_120k         = new ItemStack(ItemLoader.COOLANT_CELL_120K);
@@ -114,7 +115,7 @@ public class Recipes {
                 "ABA",
                 'A',iridium_plate,
                 'B',neutron_reflector,
-                'C',dense_carbon_plate,
+                'C',machine_casing,
                 'D',reactor_chamber
         );
     }

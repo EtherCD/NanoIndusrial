@@ -44,7 +44,7 @@ public class NanIC {
     @SubscribeEvent
     public void register(TeBlockFinalCallEvent ev) {
         TeBlockRegistry.addAll(GeneratorsTE.class, GeneratorsTE.LOCATION);
-        //TeBlockRegistry.addAll(MachinesTE.class, MachinesTE.LOCATION);
+        TeBlockRegistry.addAll(MachinesTE.class, MachinesTE.LOCATION);
     }
 
     @EventHandler
@@ -57,7 +57,7 @@ public class NanIC {
         Recipes.addCraftingRecipes();
         Recipes.addMachineRecipe();
         GeneratorsTE.buildDummies();
-        //MachinesTE.buildDummies();
+        MachinesTE.buildDummies();
         log.info("NanoIC is "+ACTIVATED);
     }
     @EventHandler
