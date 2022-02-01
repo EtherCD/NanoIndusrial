@@ -10,6 +10,10 @@ item.matter_transformer.name=Matter transformer
 ic2.protonium_energy_crystal=Proton Energy Crystal
 
 
+#GUI
+nanic.gui.singular_compressor.title=Singular Compressor
+
+
 #Reactor
 ic2.coolant_cell_one_two_k=Coolant Cell 120K
 ic2.coolant_cell_two_four_k=Coolant Cell 240K
@@ -28,6 +32,10 @@ nanic.generators.low_voltage_solar_panel=§aLow Voltage Solar Panel
 nanic.generators.medium_voltage_solar_panel=§bMedium Voltage Solar Panel
 nanic.generators.high_voltage_solar_panel=§cHigh voltage solar panel
 nanic.generators.extreme_voltage_solar_panel=§5Extreme voltage solar panel
+
+
+#Machines
+nanic.machines.singular_compressor=Singular Compressor
 
 
 #ToolTip

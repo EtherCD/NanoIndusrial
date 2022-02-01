@@ -5,16 +5,19 @@ import ic2.api.item.IC2Items;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.IRecipeInputFactory;
 import ic2.core.recipe.BasicMachineRecipeManager;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import java.nio.charset.StandardCharsets;
+import static eth.ethercd.nanic.recipes.MyRecipeFactory.singularCompressor;
 
 public class Recipes {
     public static final ItemStack advanced_circuit      = IC2Items.getItem("crafting", "advanced_circuit");
     public static final ItemStack hex_heat_storage      = IC2Items.getItem("hex_heat_storage");
     public static final ItemStack carbon_plate          = IC2Items.getItem("crafting", "carbon_plate");
     public static final ItemStack laptron_crystal       = IC2Items.getItem("lapotron_crystal");
+
+    public static final ItemStack iron_ingot            = new ItemStack(Items.IRON_INGOT);
 
     //misc
     public static final ItemStack protonium_electrical_circuit  = new ItemStack(ItemLoader.PROTONIUM_ELECTRICAL_CIRCUIT);
@@ -26,10 +29,28 @@ public class Recipes {
     public static final ItemStack dense_carbon_plate    = new ItemStack(ItemLoader.DENSE_CARBON_PLATE);
 
     //public static final ItemStack plate_gold        = IC2Items.getItem("plate", "gold");
-    public static final ItemStack iron_plate        = IC2Items.getItem("plate", "iron");
-    public static final ItemStack tin_plate         = IC2Items.getItem("plate", "tin");
-    public static final ItemStack alloy_chestplate  = IC2Items.getItem("crafting", "alloy");
-    public static final ItemStack iridium_plate     = IC2Items.getItem("crafting", "iridium");
+    public static final ItemStack bronze_plate                        = IC2Items.getItem("plate", "bronze");
+    public static final ItemStack copper_plate                        = IC2Items.getItem("plate", "copper");
+    public static final ItemStack gold_plate                          = IC2Items.getItem("plate", "gold");
+    public static final ItemStack lapis_plate                         = IC2Items.getItem("plate", "lapis");
+    public static final ItemStack lead_plate                          = IC2Items.getItem("plate", "lead");
+    public static final ItemStack obsidian_plate                      = IC2Items.getItem("plate", "obsidian");
+    public static final ItemStack steel_plate                         = IC2Items.getItem("plate", "steel");
+    public static final ItemStack iron_plate                          = IC2Items.getItem("plate", "iron");
+    public static final ItemStack tin_plate                           = IC2Items.getItem("plate", "tin");
+    public static final ItemStack alloy_chestplate                    = IC2Items.getItem("crafting", "alloy");
+    public static final ItemStack iridium_plate                       = IC2Items.getItem("crafting", "iridium");
+
+    public static final ItemStack dense_bronze                          = IC2Items.getItem("plate", "dense_bronze");
+    public static final ItemStack dense_copper                          = IC2Items.getItem("plate", "dense_copper");
+    public static final ItemStack dense_gold                            = IC2Items.getItem("plate", "dense_gold");
+    public static final ItemStack dense_iron                            = IC2Items.getItem("plate", "dense_iron");
+    public static final ItemStack dense_lapis                           = IC2Items.getItem("plate", "dense_iron");
+    public static final ItemStack dense_lead                            = IC2Items.getItem("plate", "dense_lead");
+    public static final ItemStack dense_obsidian                        = IC2Items.getItem("plate", "dense_obsidian");
+    public static final ItemStack dense_steel                           = IC2Items.getItem("plate", "dense_steel");
+    public static final ItemStack dense_tin                             = IC2Items.getItem("plate", "dense_tin");
+
 
     //te
     public static final ItemStack machine_casing    = IC2Items.getItem("resource", "machine");
@@ -127,19 +148,31 @@ public class Recipes {
     public static void addMachineRecipe() {
         IRecipeInputFactory input = ic2.api.recipe.Recipes.inputFactory;
 
-        //addPlateCompressorRecipe(input.forStack(scandium_ingot), scandium_plate);
-        //addPlateCompressorRecipe(input.forStack(tantalum_ingot), tantalum_plate);
-        addCompressorRecipe(input.forStack(carbon_plate, 9), dense_carbon_plate);
+        addSingularCompressor(input.forStack(carbon_plate, 9), dense_carbon_plate);
+
+        addSingularCompressor(input.forStack(bronze_plate, 9),  dense_bronze);
+        addSingularCompressor(input.forStack(copper_plate, 9),  dense_copper);
+        addSingularCompressor(input.forStack(gold_plate, 9),    dense_gold);
+        addSingularCompressor(input.forStack(iron_plate, 9),    dense_iron);
+        addSingularCompressor(input.forStack(lapis_plate, 9),   dense_lapis);
+        addSingularCompressor(input.forStack(lead_plate, 9),    dense_lead);
+        addSingularCompressor(input.forStack(obsidian_plate, 9),dense_obsidian);
+        addSingularCompressor(input.forStack(steel_plate, 9),   dense_steel);
+        addSingularCompressor(input.forStack(tin_plate, 9),     dense_tin);
+
+
+        addSingularCompressor(input.forStack(iridium_plate, 9), protonium_plate);
+        addSingularCompressor(input.forStack(iron_ingot, 9),    iridium_ore);
     }
 
     private static void addCompressorRecipe(IRecipeInput inp, ItemStack out) {
         ic2.api.recipe.Recipes.compressor.addRecipe(inp, (NBTTagCompound)null, false, new ItemStack[] {out});
     }
 
-    /*private static void addPlateCompressorRecipe(IRecipeInput inp, ItemStack out) {
-        if(ic2.api.recipe.Recipes.plateCompressor==null) {
-            ic2.api.recipe.Recipes.plateCompressor = new BasicMachineRecipeManager();
+    private static void addSingularCompressor(IRecipeInput inp, ItemStack out) {
+        if(singularCompressor==null) {
+            singularCompressor = new BasicMachineRecipeManager();
         }
-        ic2.api.recipe.Recipes.plateCompressor.addRecipe(inp, (NBTTagCompound)null, false, new ItemStack[] {out});
-    }*/
+        singularCompressor.addRecipe(inp, (NBTTagCompound)null, false, new ItemStack[] {out});
+    }
 }

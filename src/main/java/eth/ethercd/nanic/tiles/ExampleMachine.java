@@ -1,7 +1,8 @@
-package eth.ethercd.nanic.machines;
+package eth.ethercd.nanic.tiles;
 
 import ic2.api.recipe.IMachineRecipeManager;
 import ic2.api.recipe.IRecipeInput;
+import ic2.api.recipe.MachineRecipe;
 import ic2.api.recipe.MachineRecipeResult;
 import ic2.api.upgrade.IUpgradableBlock;
 import ic2.api.upgrade.IUpgradeItem;
@@ -9,10 +10,7 @@ import ic2.api.upgrade.UpgradableProperty;
 import ic2.core.ContainerBase;
 import ic2.core.IHasGui;
 import ic2.core.block.comp.Redstone;
-import ic2.core.block.invslot.InvSlotOutput;
-import ic2.core.block.invslot.InvSlotProcessable;
-import ic2.core.block.invslot.InvSlotProcessableGeneric;
-import ic2.core.block.invslot.InvSlotUpgrade;
+import ic2.core.block.invslot.*;
 import ic2.core.block.machine.tileentity.TileEntityElectricMachine;
 import ic2.core.gui.dynamic.DynamicContainer;
 import ic2.core.gui.dynamic.DynamicGui;
@@ -32,7 +30,7 @@ import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class ExampleMachineTE extends TileEntityElectricMachine implements IHasGui, IGuiValueProvider, IUpgradableBlock {
+public class ExampleMachine extends TileEntityElectricMachine implements IHasGui, IGuiValueProvider, IUpgradableBlock {
 
     protected final int idleEU;
     protected final int activeEU;
@@ -44,15 +42,14 @@ public class ExampleMachineTE extends TileEntityElectricMachine implements IHasG
 
     protected final Redstone redstone;
 
-    @GuiSynced
-    public int progress;
+    @GuiSynced public int progress;
 
-    ExampleMachineTE(int tier, IMachineRecipeManager<IRecipeInput, Collection<ItemStack>, ItemStack> recipeSet) {
-        this(tier, recipeSet, 1, 25);
+    public ExampleMachine(int tier, IMachineRecipeManager<IRecipeInput, Collection<ItemStack>, ItemStack> recipeSet) {
+        this(tier, recipeSet, 1, 25, 6000);
     }
 
-    ExampleMachineTE(int tier, IMachineRecipeManager<IRecipeInput, Collection<ItemStack>, ItemStack> recipeSet, int idleEU, int activeEU) {
-        super(6000, 1);
+    public ExampleMachine(int tier, IMachineRecipeManager<IRecipeInput, Collection<ItemStack>, ItemStack> recipeSet, int idleEU, int activeEU, int storage) {
+        super(storage, tier);
         this.maxProgress = 1000;
         this.progress = 0;
         this.idleEU = idleEU;
@@ -136,9 +133,7 @@ public class ExampleMachineTE extends TileEntityElectricMachine implements IHasG
         }
         if (this.canRun()) {
             if (canOperate && this.energy.useEnergy((double)this.activeEU)) {
-                this.progress += 10;
-            } else {
-                this.progress = 0;
+                this.progress += 50;
             }
         } else {
             this.progress = 0;
@@ -151,7 +146,6 @@ public class ExampleMachineTE extends TileEntityElectricMachine implements IHasG
                 needsInvUpdate |= ((IUpgradeItem)stack.getItem()).onTick(stack, this);
             }
         }
-        this.setActive(true);
         if (needsInvUpdate) {
             this.markDirty();
         }

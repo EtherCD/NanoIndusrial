@@ -2,9 +2,7 @@
 	"forge_marker"	:1,
 	"variants"		:{
 		"type"		:{
-			"low_voltage_solar_panel"	:	{"model": 	"nanic:generators/low_voltage_solar_panel"		},
-			"medium_voltage_solar_panel":	{"model": 	"nanic:generators/medium_voltage_solar_panel"	},
-			"high_voltage_solar_panel"	: 	{"model":	"nanic:generators/high_voltage_solar_panel"		}
+			"singular_compressor"		:	{"model": 	"nanic:machines/singular_compressor"		}
 		},
 		"facing"	: {
 			"down"	: { "x": 90 							},

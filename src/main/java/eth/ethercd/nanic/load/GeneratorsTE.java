@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import javax.annotation.Nullable;
 import java.util.Set;
 
+
 public enum GeneratorsTE implements ITeBlock {
 
     low_voltage_solar_panel(LowVoltageSolarPanelTE.class, 1, EnumRarity.COMMON),
@@ -107,6 +108,7 @@ public enum GeneratorsTE implements ITeBlock {
         return this.itemMeta;
     }
 
+    @Deprecated
     public static void buildDummies() {
         ModContainer mc = Loader.instance().activeModContainer();
         if (mc != null && NanIC.MODID.equals(mc.getModId())) {

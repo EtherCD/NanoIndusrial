@@ -7,17 +7,10 @@ import ic2.api.energy.tile.IEnergyAcceptor;
 import ic2.api.energy.tile.IMultiEnergySource;
 import ic2.api.network.INetworkClientTileEntityEventListener;
 import ic2.api.network.INetworkUpdateListener;
-import ic2.core.ContainerBase;
-import ic2.core.IC2;
-import ic2.core.IHasGui;
 import ic2.core.block.TileEntityInventory;
-import ic2.core.gui.dynamic.DynamicContainer;
-import ic2.core.gui.dynamic.GuiParser;
 import ic2.core.init.Localization;
 import ic2.core.network.GuiSynced;
-import ic2.core.util.LogCategory;
 import net.minecraft.block.material.MapColor;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +21,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class SolarPanel extends TileEntityInventory implements IMultiEnergySource, INetworkClientTileEntityEventListener, INetworkUpdateListener {
@@ -152,9 +144,7 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
     }
 
     @Override
-    public void drawEnergy(double amount) {
-
-    }
+    public void drawEnergy(double amount) {}
 
     @Override
     public int getSourceTier() {
@@ -178,13 +168,13 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
         tooltip.add(Localization.translate("ic2.item.tooltip.PowerTier",
                 this.tier)
         );
-        tooltip.add(Localization.translate("nanic.item.tooltip.day_generation")+this.genDay);
-        tooltip.add(Localization.translate("nanic.item.tooltip.night_generation")+this.genNight);
         tooltip.add(Localization.translate("ic2.item.tooltip.Output")
                 +" "
                 +this.maxOutput
                 +" EU/t"
         );
+        tooltip.add(Localization.translate("nanic.item.tooltip.day_generation")+this.genDay);
+        tooltip.add(Localization.translate("nanic.item.tooltip.night_generation")+this.genNight);
     }
 
 
@@ -193,8 +183,6 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
     }
 
     @Override
-    public void onNetworkEvent(EntityPlayer player, int event) {
-
-    }
+    public void onNetworkEvent(EntityPlayer player, int event) {}
 }
 

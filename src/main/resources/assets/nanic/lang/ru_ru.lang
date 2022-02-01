@@ -10,7 +10,8 @@ item.dense_carbon_plate.name=Плотная углепластиковая тк�
 item.matter_transformer.name=Трансформатор материи
 
 
-#Слитки
+#GUI
+nanic.gui.singular_compressor.title=Сингулярный сжиматель
 
 
 #Енергитические кристалы
@@ -36,6 +37,10 @@ nanic.generators.low_voltage_solar_panel=§aСолнечная панель ни
 nanic.generators.medium_voltage_solar_panel=§bСолнечная панель среднего напряжения
 nanic.generators.high_voltage_solar_panel=§cСолнечная панель высокого напряжения
 nanic.generators.extreme_voltage_solar_panel=§5Солнечная панель экстримального напряжения
+
+
+#Машины
+nanic.machines.singular_compressor=Сингулярный сжиматель
 
 
 #В инвентаре

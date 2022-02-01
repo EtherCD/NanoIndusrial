@@ -2,7 +2,7 @@ package eth.ethercd.nanic;
 
 import eth.ethercd.nanic.load.GeneratorsTE;
 import eth.ethercd.nanic.load.IC2ToolsLoader;
-import eth.ethercd.nanic.load.MachinesTE;
+import eth.ethercd.nanic.load.MachineTEs;
 import eth.ethercd.nanic.recipes.Recipes;
 import eth.ethercd.nanic.proxies.CommonProxy;
 import ic2.api.event.TeBlockFinalCallEvent;
@@ -41,10 +41,11 @@ public class NanIC {
     public void start(FMLConstructionEvent ev) {
         MinecraftForge.EVENT_BUS.register(this);
     }
+
     @SubscribeEvent
     public void register(TeBlockFinalCallEvent ev) {
         TeBlockRegistry.addAll(GeneratorsTE.class, GeneratorsTE.LOCATION);
-        TeBlockRegistry.addAll(MachinesTE.class, MachinesTE.LOCATION);
+        TeBlockRegistry.addAll(MachineTEs.class, MachineTEs.LOCATION);
     }
 
     @EventHandler
@@ -57,8 +58,8 @@ public class NanIC {
         Recipes.addCraftingRecipes();
         Recipes.addMachineRecipe();
         GeneratorsTE.buildDummies();
-        MachinesTE.buildDummies();
-        log.info("NanoIC is "+ACTIVATED);
+        MachineTEs.buildDummies();
+        log.info("NanIC is "+ACTIVATED);
     }
     @EventHandler
     public void postLoad(FMLPostInitializationEvent ev) {}

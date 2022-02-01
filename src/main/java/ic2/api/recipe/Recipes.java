@@ -2,6 +2,8 @@ package ic2.api.recipe;
 
 import net.minecraft.item.ItemStack;
 
+import java.util.Collection;
+
 /**
  * General recipe registry.
  *
@@ -139,7 +141,6 @@ public class Recipes {
 	public static ICannerEnrichRecipeManager cannerEnrich;
 	public static IElectrolyzerRecipeManager electrolyzer;
 	public static IFermenterRecipeManager fermenter;
-	public static IBasicMachineRecipeManager matterTransformer;
 
 	/**
 	 * Recipe manager for uu mass fabricator (matter gen) recipes.
