@@ -2,6 +2,7 @@
 item.protonium_electrical_circuit.name=Protonium electrical circuit
 item.neutronium_plate.name=Neutronium plate
 item.protonium_plate.name=Protonium plate
+item.quark_plate.name=Quark plate
 item.dense_carbon_plate.name=Dense carbon plate
 item.matter_transformer.name=Matter transformer
 
@@ -46,3 +47,8 @@ nanic.item.tooltip.drill.mode_off=Mode: Standart
 nanic.item.tooltip.destroyer.mode_on=Mode: Destruction of the fabric of the universe
 nanic.item.tooltip.destroyer.mode_off=Mode: Standart
 nanic.item.tooltip.destroyer.ops=Can break a bedrock.
+
+#JEI
+nanic.jei.info.protonium_plate=The mass of one star enclosed in one plate. Really very expensive thing, because it can only be created in the Singular Compressor, from 9 iridium plates. Really expensive!
+nanic.jei.info.neutronium_plate=The mass of an entire neutron star enclosed in a single plate. Bolle is more massive than Protonium and has a more complex craft, it can also be created only in the Singular Compressor, from 2 Protonium plates. Really super expensive!
+nanic.jei.info.quark_plate=Incredibly compressed matter is already as many as 10 suns in one plate. Under the incredible pressure inside this plate, even inons cannot exist and immediately decay into quarks. No time to exist!

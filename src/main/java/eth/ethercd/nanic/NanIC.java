@@ -1,5 +1,6 @@
 package eth.ethercd.nanic;
 
+import eth.ethercd.nanic.jei.IModPlugin;
 import eth.ethercd.nanic.load.GeneratorsTE;
 import eth.ethercd.nanic.load.IC2ToolsLoader;
 import eth.ethercd.nanic.load.MachineTEs;
@@ -7,6 +8,8 @@ import eth.ethercd.nanic.recipes.Recipes;
 import eth.ethercd.nanic.proxies.CommonProxy;
 import ic2.api.event.TeBlockFinalCallEvent;
 import ic2.core.block.TeBlockRegistry;
+import mezz.jei.api.IModRegistry;
+import mezz.jei.api.JEIPlugin;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -43,7 +46,7 @@ public class NanIC {
     }
 
     @SubscribeEvent
-    public void register(TeBlockFinalCallEvent ev) {
+    public void reg(TeBlockFinalCallEvent ev) {
         TeBlockRegistry.addAll(GeneratorsTE.class, GeneratorsTE.LOCATION);
         TeBlockRegistry.addAll(MachineTEs.class, MachineTEs.LOCATION);
     }
@@ -52,6 +55,7 @@ public class NanIC {
     public void preLoad(FMLPreInitializationEvent ev) {
         log=ev.getModLog();
         IC2ToolsLoader.buildItems(ev.getSide());
+        new IModPlugin();
     }
     @EventHandler
     public void load(FMLInitializationEvent ev) {
@@ -62,5 +66,6 @@ public class NanIC {
         log.info("NanIC is "+ACTIVATED);
     }
     @EventHandler
-    public void postLoad(FMLPostInitializationEvent ev) {}
+    public void postLoad(FMLPostInitializationEvent ev) {
+    }
 }

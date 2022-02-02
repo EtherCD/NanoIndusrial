@@ -24,6 +24,14 @@ repositories {
         name 'IC2'
         url 'http://maven.ic2.player.to'
     }
+    maven {
+        name = "Progwml6 maven"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+    maven {
+        name = "ModMaven"
+        url = "modmaven.k-4u.nl"
+    }
     mavenCentral()
 }
 
@@ -58,6 +66,9 @@ dependencies {
 
     compile "net.industrial-craft:industrialcraft-2:2.8.221-ex112:api"
     compile "net.industrial-craft:industrialcraft-2:2.8.221-ex112:dev"
+
+    compile "mezz.jei:jei_${mc_version}:${jei_version}:api"
+    compile "mezz.jei:jei_${mc_version}:${jei_version}"
 
     //compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"

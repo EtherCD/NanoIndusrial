@@ -17,6 +17,7 @@ public class ItemLoader {
     //Plate
     public static final Item NEUTRONIUM_PLATE                       = new NeutroniumPlate("neutronium_plate");
     public static final Item PROTONIUM_PLATE                        = new ProtoniumPlate("protonium_plate");
+    public static final Item QUARK_PLATE                            = new QuarkPlate("quark_plate");
     public static final Item DENSE_CARBON_PLATE                     = new DenseCarbonPlate("dense_carbon_plate");
     //Ingots
 
