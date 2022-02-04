@@ -3,9 +3,9 @@
     <text y="6" align="center">{nanic.gui.singular_compressor.title}</text>
     <slot name="input" x="50" y="33"/>
     <slot name="output" x="105" y="33"/>
-    <slot name="discharge" x="9" y="53"/>
+    <slot name="discharge" x="12" y="53"/>
     <environment name="game">
-    	<button type="recipe" x="77" y="37" width="22" height="15" event="matter_transformer" />
+    	<button type="recipe" x="77" y="37" width="22" height="15" event="singular_compressor" />
     	<slotgrid name="upgrade" x="151" y="25" cols="1"/>
    	</environment>
     <energygauge x="16" y="34"/>

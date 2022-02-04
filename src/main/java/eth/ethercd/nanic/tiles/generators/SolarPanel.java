@@ -7,10 +7,16 @@ import ic2.api.energy.tile.IEnergyAcceptor;
 import ic2.api.energy.tile.IMultiEnergySource;
 import ic2.api.network.INetworkClientTileEntityEventListener;
 import ic2.api.network.INetworkUpdateListener;
+import ic2.core.ContainerBase;
+import ic2.core.IHasGui;
 import ic2.core.block.TileEntityInventory;
+import ic2.core.gui.dynamic.DynamicContainer;
+import ic2.core.gui.dynamic.DynamicGui;
+import ic2.core.gui.dynamic.GuiParser;
 import ic2.core.init.Localization;
 import ic2.core.network.GuiSynced;
 import net.minecraft.block.material.MapColor;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,11 +29,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class SolarPanel extends TileEntityInventory implements IMultiEnergySource, INetworkClientTileEntityEventListener, INetworkUpdateListener {
+public class SolarPanel extends TileEntityInventory implements IMultiEnergySource, IHasGui, INetworkClientTileEntityEventListener, INetworkUpdateListener {
     @GuiSynced
     public int tier;
 
-    @GuiSynced
     protected int genDay;
     protected int genNight;
     protected int genRain;
@@ -55,8 +60,8 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
             this.rain = this.world.getBiome(this.pos).getRainfall() > 0.0F && (this.world.isRaining() || this.world.isThundering());
             updateVis();
         }
+        this.rerender();
     }
-
     @Override
     protected void onUnloaded() {
         super.onUnloaded();
@@ -64,7 +69,6 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
             this.addedToEnet = MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
         }
     }
-
     @Override
     protected void updateEntityServer() {
         super.updateEntityServer();
@@ -76,30 +80,30 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
 
         this.addedToEnet = !MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
 
-        updateVis();
-
+        generationState=updateVis();
     }
-
-    private void updateVis() {
-        if(!canSee) {
-            generationState=GenerationState.NONE;
-        }
-        if (isDay&&canSee){
-            if(!(rain)){
-                generationState=GenerationState.DAY;
-            } else {
-                generationState=GenerationState.RAIN;
+    private GenerationState updateVis() {
+        if (!this.world.isRemote) {
+            if (!this.canSee) {
+                return GenerationState.NONE;
+            }
+            if (this.isDay && this.canSee) {
+                if (!(this.rain)) {
+                    return GenerationState.DAY;
+                } else {
+                    return GenerationState.RAIN;
+                }
+            }
+            if (!this.isDay && this.canSee) {
+                if (!(this.rain)) {
+                    return GenerationState.NIGHT;
+                } else {
+                    return GenerationState.NIGHT_RAIN;
+                }
             }
         }
-        if (!isDay&&canSee) {
-            if(!(rain)) {
-                generationState=GenerationState.NIGHT;
-            } else {
-                generationState=GenerationState.NIGHT_RAIN;
-            }
-        }
+        return GenerationState.NONE;
     }
-
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
@@ -109,58 +113,54 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
-        nbt.setInteger("production", getGenFromGenState(generationState));
+        nbt.setInteger("production", getGenFromGenState());
         nbt.setInteger("tier", this.tier);
         return nbt;
     }
-
     @Override
     public void onPlaced(ItemStack stack, EntityLivingBase player, EnumFacing facing) {
         super.onPlaced(stack,player,facing);
     }
-
     @Override
     public boolean emitsEnergyTo(IEnergyAcceptor receiver, EnumFacing side) {
         return true;
     }
-
-    private int getGenFromGenState(GenerationState genState) {
-        if (generationState==GenerationState.DAY)
+    private int getGenFromGenState() {
+        if (this.generationState==GenerationState.DAY)
             return genDay;
-        else if (generationState==GenerationState.NIGHT)
+        else if (this.generationState==GenerationState.NIGHT)
             return genNight;
-        else if (generationState==GenerationState.RAIN)
+        else if (this.generationState==GenerationState.RAIN)
             return genRain;
-        else if (generationState==GenerationState.NIGHT_RAIN)
+        else if (this.generationState==GenerationState.NIGHT_RAIN)
             return genNightRain;
-        else
-            return 0;
+        return 0;
     }
-
     // Method of gen energy
     @Override
     public double getOfferedEnergy() {
-        return getGenFromGenState(generationState);
+        return this.getGenFromGenState();
     }
-
     @Override
     public void drawEnergy(double amount) {}
-
     @Override
     public int getSourceTier() {
         return this.tier;
     }
-
     @Override
     public boolean sendMultipleEnergyPackets() {
-        return (double)getGenFromGenState(generationState)-EnergyNet.instance.getPowerFromTier(this.tier)>0.0D;
+        return (double)getGenFromGenState()-EnergyNet.instance.getPowerFromTier(this.tier)>0.0D;
     }
-
     @Override
     public int getMultipleEnergyPacketAmount() {
-        return (int)Math.round((double)getGenFromGenState(generationState));
+        return (int)Math.round((double)getGenFromGenState());
     }
-
+    @Override
+    public void onBlockBreak() {
+        this.generationState=GenerationState.NONE;
+        this.notify();
+        this.clear();
+    }
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, List tooltip, ITooltipFlag advanced) {
@@ -176,13 +176,20 @@ public class SolarPanel extends TileEntityInventory implements IMultiEnergySourc
         tooltip.add(Localization.translate("nanic.item.tooltip.day_generation")+this.genDay);
         tooltip.add(Localization.translate("nanic.item.tooltip.night_generation")+this.genNight);
     }
-
-
     public String getTier() {
         return Integer.toString(this.tier);
     }
-
     @Override
     public void onNetworkEvent(EntityPlayer player, int event) {}
+    @Override
+    public ContainerBase<?> getGuiContainer(EntityPlayer p) {
+        return DynamicContainer.create(this, p, GuiParser.parse(this.teBlock));
+    }
+    @Override
+    public GuiScreen getGui(EntityPlayer p, boolean b) {
+        return DynamicGui.create(this, p, GuiParser.parse(this.teBlock));
+    }
+    @Override
+    public void onGuiClosed(EntityPlayer entityPlayer) {}
 }
 

@@ -1,5 +1,6 @@
 package eth.ethercd.nanic.tiles;
 
+import ic2.api.item.IC2Items;
 import ic2.api.recipe.IMachineRecipeManager;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.MachineRecipe;
@@ -9,6 +10,7 @@ import ic2.api.upgrade.IUpgradeItem;
 import ic2.api.upgrade.UpgradableProperty;
 import ic2.core.ContainerBase;
 import ic2.core.IHasGui;
+import ic2.core.block.TileEntityBlock;
 import ic2.core.block.comp.Redstone;
 import ic2.core.block.invslot.*;
 import ic2.core.block.machine.tileentity.TileEntityElectricMachine;
@@ -35,6 +37,7 @@ public class ExampleMachine extends TileEntityElectricMachine implements IHasGui
     protected final int idleEU;
     protected final int activeEU;
     protected final int maxProgress;
+    protected int speed=10;
 
     public final InvSlotProcessable<IRecipeInput, Collection<ItemStack>, ItemStack> inputSlot;
     public final InvSlotOutput outputSlot;
@@ -59,7 +62,6 @@ public class ExampleMachine extends TileEntityElectricMachine implements IHasGui
         this.upgradeSlot  = new InvSlotUpgrade(this, "upgrade", 2);
         this.redstone = (Redstone)this.addComponent(new Redstone(this));
     }
-
 
     @Override
     public void readFromNBT(final NBTTagCompound nbt) {
@@ -133,7 +135,7 @@ public class ExampleMachine extends TileEntityElectricMachine implements IHasGui
         }
         if (this.canRun()) {
             if (canOperate && this.energy.useEnergy((double)this.activeEU)) {
-                this.progress += 50;
+                this.progress += this.speed;
             }
         } else {
             this.progress = 0;

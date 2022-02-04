@@ -34,7 +34,6 @@ public class QuarkPlate extends Item implements IHasModel, ICustomDamageItem {
 
     @Override
     public void setCustomDamage(ItemStack stack, int damage) {
-        
     }
 
     @Override

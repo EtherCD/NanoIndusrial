@@ -52,6 +52,7 @@ nanic.item.tooltip.drill.mode_off=Режим: Стандартный
 nanic.item.tooltip.destroyer.mode_on=Режим: Уничтожение ткани мироздания
 nanic.item.tooltip.destroyer.mode_off=Режим: Стандартный
 nanic.item.tooltip.destroyer.ops=Может сломать бедрок.
+nanic.tool.destr=Темепратура: 
 
 #JEI
 nanic.jei.info.protonium_plate=Масса одной звезды, заключенной в одной пластине. Действительно очень дорогая штука, потому что создать ее можно только в Сингулярном сжиматели, из 9 иридиевых пластин. Действительно дорого!

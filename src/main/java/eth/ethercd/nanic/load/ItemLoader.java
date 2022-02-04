@@ -23,10 +23,12 @@ public class ItemLoader {
 
     //Energy Crystals
     public static final Item PROTONIUM_ENERGY_CRYSTAL               = new ProtoniumEnergyCrystal("protonium_energy_crystal");
+    public static final Item NEUTRONIUM_ENERGY_CRYSTAL              = new NeutroniumEnergyCrystal("neutronium_energy_crystal");
     //Reactor Components
     public static final Item COOLANT_CELL_120K                      = new CoolantCell120K("coolant_cell_one_two_k");
     public static final Item COOLANT_CELL_240K                      = new CoolantCell240K("coolant_cell_two_four_k");
     public static final Item COOLANT_CELL_480K                      = new CoolantCell480K("coolant_cell_four_eight_k");
+    public static final Item COOLANT_CELL_INFINITE                  = new CoolantCellInfinite("coolant_cell_infinite");
     public static final Item NEUTRON_PROTON_REFLECTOR               = new NeutronProtonReflector("neutron_proton_reflector");
     public static final Item REINFORCED_NEUTRON_PROTON_REFLECTOR    = new ReinforcedNeutronProtonReflector("reinforced_neutron_proton_reflector");
     public static final Item GLITCH_URANIUM_QUAD_ROOD               = new GlichedUraniumQuadRoad("glitch_uranium_quad_road");

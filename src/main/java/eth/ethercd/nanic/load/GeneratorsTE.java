@@ -6,7 +6,9 @@ import ic2.core.block.ITeBlock;
 import ic2.core.block.TileEntityBlock;
 import ic2.core.ref.TeBlock;
 import ic2.core.util.Util;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
@@ -36,76 +38,65 @@ public enum GeneratorsTE implements ITeBlock {
         GameRegistry.registerTileEntity(teClass, "nanic:"+this.getName());
     }
 
-    @Nullable
-    @Override
-    public TileEntityBlock getDummyTe() {
-        return this.dummyTe;
-    }
-
-    @Override
-    public ResourceLocation getIdentifier() {
-        return this.LOCATION;
-    }
-
     @Override
     public boolean hasItem() {
         return true;
     }
-
-    @Nullable
-    @Override
-    public Class getTeClass() {
-        return this.teClass;
-    }
-
-    @Override
-    public boolean hasActive() {
-        return low_voltage_solar_panel==this||medium_voltage_solar_panel==this||high_voltage_solar_panel==this;
-    }
-
-    @Override
-    public Set getSupportedFacings() {
-        return Util.horizontalFacings;
-    }
-
-    @Override
-    public float getHardness() {
-        return 20.f;
-    }
-
-    @Override
-    public float getExplosionResistance() {
-        return 30.f;
-    }
-
-    @Override
-    public TeBlock.HarvestTool getHarvestTool() {
-        return TeBlock.HarvestTool.Pickaxe;
-    }
-
-    @Override
-    public TeBlock.DefaultDrop getDefaultDrop() {
-        return TeBlock.DefaultDrop.Self;
-    }
-
-    @Override
-    public EnumRarity getRarity() {
-        return this.rarity;
-    }
-
-    @Override
-    public boolean allowWrenchRotating() {
-        return false;
-    }
-
     @Override
     public String getName() {
         return this.name();
     }
-
     @Override
     public int getId() {
         return this.itemMeta;
+    }
+    @Override
+    public ResourceLocation getIdentifier() {
+        return LOCATION;
+    }
+    @Override
+    public Class<? extends TileEntityBlock> getTeClass() {
+        return this.teClass;
+    }
+    @Override
+    public boolean hasActive() {
+        return true;
+    }
+    @Override
+    public float getHardness() {
+        return 5.0F;
+    }
+    @Override
+    public float getExplosionResistance() {
+        return 10.0F;
+    }
+    @Override
+    public TeBlock.HarvestTool getHarvestTool() {
+        return TeBlock.HarvestTool.Pickaxe;
+    }
+    @Override
+    public TeBlock.DefaultDrop getDefaultDrop() {
+        return TeBlock.DefaultDrop.Machine;
+    }
+    @Override
+    public boolean allowWrenchRotating() {
+        return false;
+    }
+    @Override
+    public Set<EnumFacing> getSupportedFacings() {
+        return Util.horizontalFacings;
+    }
+    @Override
+    public EnumRarity getRarity() {
+        return EnumRarity.COMMON;
+    }
+    @Override
+    public Material getMaterial() {
+        return Material.IRON;
+    }
+    @Override
+    public TileEntityBlock getDummyTe() {
+        return this.dummyTe;
     }
 
     @Deprecated
@@ -114,7 +105,7 @@ public enum GeneratorsTE implements ITeBlock {
         if (mc != null && NanIC.MODID.equals(mc.getModId())) {
             GeneratorsTE[] var1 = values();
             int var2 = var1.length;
-            for(int var3 = 1; var3 < var2; ++var3) {
+            for(int var3 = 0; var3 < var2; ++var3) {
                 GeneratorsTE block = var1[var3];
                 if (block.teClass != null) {
                     try {

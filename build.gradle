@@ -37,7 +37,7 @@ repositories {
 
 version = '1.0'
 group = 'com.yourname.modid'
-archivesBaseName = 'nanic'
+archivesBaseName = "Nano Industrial ${version}-beta"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -68,7 +68,7 @@ dependencies {
     compile "net.industrial-craft:industrialcraft-2:2.8.221-ex112:dev"
 
     compile "mezz.jei:jei_${mc_version}:${jei_version}:api"
-    compile "mezz.jei:jei_${mc_version}:${jei_version}"
+    //compile "mezz.jei:jei_${mc_version}:${jei_version}"
 
     //compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gui width="176" height="166">
+	<text y="6" align="center">{nanic.generators.low_voltage_solar_panel}</text>
+	<text y="55" align="center">This panel in beta testing!</text>
+	<playerInventory x="7" y="83"/>
+</gui>

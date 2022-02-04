@@ -1,11 +1,16 @@
 package eth.ethercd.nanic.recipes;
 
+import eth.ethercd.nanic.jei.recipes.sc.SCRecipe;
+import eth.ethercd.nanic.load.IC2ToolsLoader;
 import eth.ethercd.nanic.load.ItemLoader;
+import eth.ethercd.nanic.load.MachineTEs;
+import eth.ethercd.nanic.machines.SingularCompressor;
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.IRecipeInputFactory;
 import ic2.core.recipe.BasicMachineRecipeManager;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -22,10 +27,12 @@ public class Recipes {
     //misc
     public static final ItemStack protonium_electrical_circuit  = new ItemStack(ItemLoader.PROTONIUM_ELECTRICAL_CIRCUIT);
     public static final ItemStack protonium_energy_crystal      = new ItemStack(ItemLoader.PROTONIUM_ENERGY_CRYSTAL);
+    public static final ItemStack neutronium_energy_crystal     = new ItemStack(ItemLoader.NEUTRONIUM_ENERGY_CRYSTAL);
     public static final ItemStack iridium_ore                   = IC2Items.getItem("misc_resource", "iridium_ore");
 
     //plates
     public static final ItemStack protonium_plate       = new ItemStack(ItemLoader.PROTONIUM_PLATE);
+    public static final ItemStack neutronium_plate      = new ItemStack(ItemLoader.NEUTRONIUM_PLATE);
     public static final ItemStack dense_carbon_plate    = new ItemStack(ItemLoader.DENSE_CARBON_PLATE);
 
     //public static final ItemStack plate_gold        = IC2Items.getItem("plate", "gold");
@@ -51,20 +58,29 @@ public class Recipes {
     public static final ItemStack dense_steel                           = IC2Items.getItem("plate", "dense_steel");
     public static final ItemStack dense_tin                             = IC2Items.getItem("plate", "dense_tin");
 
+    //ultra misc
+    public static final ItemStack destroyer_space_and_time              = new ItemStack(IC2ToolsLoader.DESTROYER_SPACE_AND_TIME.getInstance());
 
     //te
-    public static final ItemStack machine_casing    = IC2Items.getItem("resource", "machine");
+    public static final ItemStack machine_casing        = IC2Items.getItem("resource", "machine");
+    public static final ItemStack advanced_machine      = IC2Items.getItem("resource", "advanced_machine");
+    public static final ItemStack compressor            = IC2Items.getItem("te", "compressor");
+
+    public static final ItemStack singular_compressor   = new ItemStack(new SingularCompressor().getBlockType());
 
     //Reactor
     public static final ItemStack coolant_cell_120k         = new ItemStack(ItemLoader.COOLANT_CELL_120K);
     public static final ItemStack coolant_cell_240k         = new ItemStack(ItemLoader.COOLANT_CELL_240K);
     public static final ItemStack coolant_cell_480k         = new ItemStack(ItemLoader.COOLANT_CELL_480K);
+    public static final ItemStack coolant_cell_infinite     = new ItemStack(ItemLoader.COOLANT_CELL_INFINITE);
     public static final ItemStack neutron_proton_reflector  = new ItemStack(ItemLoader.NEUTRON_PROTON_REFLECTOR);
+    public static final ItemStack reinforced_neutron_proton_reflecor    = new ItemStack(ItemLoader.REINFORCED_NEUTRON_PROTON_REFLECTOR);
     public static final ItemStack matter_transformer        = new ItemStack(ItemLoader.MATTER_TRANSFORMER);
 
     public static final ItemStack neutron_reflector         = IC2Items.getItem("neutron_reflector");
     public static final ItemStack iridium_reflector         = IC2Items.getItem("iridium_reflector");
     public static final ItemStack small_uranium_235         = IC2Items.getItem("nuclear", "small_uranium_235");
+    public static final ItemStack advanced_heat_vent        = IC2Items.getItem("advanced_heat_vent");
 
     public static final ItemStack reactor_chamber           = IC2Items.getItem("te", "reactor_chamber");
 
@@ -88,6 +104,35 @@ public class Recipes {
                 'B',protonium_electrical_circuit,
                 'C',neutron_proton_reflector,
                 'D',protonium_plate
+        );
+        addShapedRecipes(
+                (neutronium_energy_crystal),
+                "ACA",
+                "CDC",
+                "ACA",
+                'A',protonium_energy_crystal,
+                'C',reinforced_neutron_proton_reflecor,
+                'D',neutronium_plate
+        );
+        addShapedRecipes(
+                (destroyer_space_and_time),
+                "N  ",
+                "PCP",
+                "CRP",
+                'C',coolant_cell_infinite,
+                'P',protonium_plate,
+                'N',neutronium_plate,
+                'R',neutronium_energy_crystal
+        );
+        addShapedRecipes(
+                (singular_compressor),
+                "ACA",
+                "BDB",
+                "ACA",
+                'A',iridium_plate,
+                'B',advanced_machine,
+                'C',neutron_proton_reflector,
+                'D',compressor
         );
         addReactorRecipes();
     }
@@ -120,6 +165,15 @@ public class Recipes {
                 'D',alloy_chestplate
         );
         addShapedRecipes(
+                (coolant_cell_infinite),
+                "IBI",
+                "IAI",
+                "IBI",
+                'A',advanced_heat_vent,
+                'B',coolant_cell_480k,
+                'I',iridium_plate
+        );
+        addShapedRecipes(
                 (neutron_proton_reflector),
                 "ADA",
                 "BCB",
@@ -128,6 +182,15 @@ public class Recipes {
                 'B',small_uranium_235,
                 'C',iridium_reflector,
                 'D',iridium_plate
+        );
+        addShapedRecipes(
+                (reinforced_neutron_proton_reflecor),
+                "ABA",
+                "BCB",
+                "ABA",
+                'A',protonium_plate,
+                'B',iridium_reflector,
+                'C',neutron_proton_reflector
         );
         addShapedRecipes(
                 (matter_transformer),
@@ -162,6 +225,7 @@ public class Recipes {
 
 
         addSingularCompressor(input.forStack(iridium_plate, 9), protonium_plate);
+        addSingularCompressor(input.forStack(protonium_plate, 9), neutronium_plate);
         addSingularCompressor(input.forStack(iron_ingot, 9),    iridium_ore);
     }
 
@@ -174,5 +238,6 @@ public class Recipes {
             singularCompressor = new BasicMachineRecipeManager();
         }
         singularCompressor.addRecipe(inp, (NBTTagCompound)null, false, new ItemStack[] {out});
+        SCRecipe.addRecipe(inp.getInputs().get(0), out);
     }
 }

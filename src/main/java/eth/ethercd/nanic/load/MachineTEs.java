@@ -7,6 +7,7 @@ import ic2.core.ref.TeBlock;
 import ic2.core.util.Util;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
